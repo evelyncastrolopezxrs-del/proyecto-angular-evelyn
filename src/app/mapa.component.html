@@ -1,0 +1,18 @@
+<!-- Punto 2: Mapa con Marker que muestra un popover al hacer click -->
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v11'" [zoom]="[9]" [center]="[-76.52, 3.45]">
+  <mgl-marker [lngLat]="[-76.52, 3.45]" #marker>
+    <div (click)="showPopup = !showPopup" style="cursor:pointer">📍 VER MARCADOR</div>
+  </mgl-marker>
+  
+  <mgl-popup *ngIf="showPopup" [lngLat]="[-76.52, 3.45]">
+    <div class="popover-content">
+      <h4>Información del sitio</h4>
+      <p>Evento registrado correctamente.</p>
+    </div>
+  </mgl-popup>
+</mgl-map>
+
+<!-- Punto 3 y 6: Componente con animación y uso de la directiva personalizada -->
+<div [@miAnimacion]="estadoPropiedad" appTracker tracking-tag="seccion-principal" class="contenedor">
+  <p>Este elemento rastrea clicks y tiene animaciones activas.</p>
+</div>

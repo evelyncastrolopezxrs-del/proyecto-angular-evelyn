@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  build_and_test:
+    docker:
+      - image: cimg/node:18.0
+    steps:
+      - checkout
+      - run:
+          name: Instalación de dependencias
+          command: npm install
+      - run:
+          name: Ejecución de Pruebas Unitarias (Jasmine)
+          command: npm test -- --watch=false --browsers=ChromeHeadless
+      - run:
+          name: Ejecución de Cypress (E2E)
+          command: npm run cypress:run
+workflows:
+  main:
+    jobs:
+      - build_and_test
